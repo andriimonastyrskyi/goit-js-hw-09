@@ -34,7 +34,7 @@ ref.form.addEventListener('submit', event => {
         Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
 
-    // змінна, яка зберігає число, яке показує затримку
+    // змінна, яка зберігає число, яке показує затримку!
     numDelay += Number(step.value);
   }
 });
