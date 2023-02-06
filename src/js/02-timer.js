@@ -12,10 +12,10 @@ const refs = {
   seconds: document.querySelector('span[data-seconds]'),
 };
 
-const isDisabled = true;
+// const isDisabled = true;
 let currentDate;
 
-refs.start.disabled = isDisabled;
+refs.start.disabled = true;
 refs.start.addEventListener('click', clickOnStart);
 
 const options = {
@@ -27,11 +27,11 @@ const options = {
     if (selectedDates[0] < Date.now()) {
       Notiflix.Report.failure('Please choose a date in the future');
 
-      refs.start.disabled = isDisabled;
+      refs.start.disabled = true;
     }
 
     if (selectedDates[0] > Date.now()) {
-      refs.start.disabled = !isDisabled;
+      refs.start.disabled = false;
       Notiflix.Notify.success('Success');
       currentDate = selectedDates[0];
     }
@@ -41,18 +41,18 @@ const options = {
 flatpickr(refs.input, options);
 
 function clickOnStart() {
-  refs.start.disabled = isDisabled;
-  refs.input.disabled = isDisabled;
+  refs.start.disabled = true;
+  refs.input.disabled = false;
 
-  let timeDifference = currentDate - Date.now();
-  renderTime(convertMs(timeDifference));
+  // let timeDifference = currentDate - Date.now();
+  // renderTime(convertMs(timeDifference));
 
   const idInterval = setInterval(() => {
     timeDifference = currentDate - Date.now();
     if (timeDifference < 0) {
       Notiflix.Report.warning('Time over');
       clearInterval(idInterval);
-      return;
+      // return;
     }
 
     renderTime(convertMs(timeDifference));

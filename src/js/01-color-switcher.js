@@ -4,33 +4,27 @@ const refs = {
   body: document.querySelector('body'),
 };
 
-const inActive = true;
 let period = null;
 
 refs.btnStart.addEventListener('click', clickStart);
 refs.btnStop.addEventListener('click', clickStop);
 
-refs.btnStop.disabled = inActive;
+refs.btnStop.disabled = true;
 
 function clickStart() {
-  refs.btnStart.disabled = inActive;
-  refs.btnStop.disabled = !inActive;
+  refs.btnStart.disabled = true;
+  refs.btnStop.disabled = false;
 
-  randomColor(refs.body);
   period = setInterval(() => {
-    randomColor(refs.body);
+    refs.body.style.backgroundColor = getRandomHexColor();
   }, 1000);
 }
 
 function clickStop(event) {
-  refs.btnStart.disabled = !inActive;
-  refs.btnStop.disabled = inActive;
+  refs.btnStart.disabled = false;
+  refs.btnStop.disabled = true;
 
   clearInterval(period);
-}
-
-function randomColor(el) {
-  el.style.backgroundColor = getRandomHexColor();
 }
 
 function getRandomHexColor() {
