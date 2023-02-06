@@ -31,7 +31,7 @@ const options = {
     } else {
       refs.start.disabled = false;
       Notiflix.Notify.success('Success');
-      // currentDate = selectedDates[0];
+      currentDate = selectedDates[0];
     }
   },
 };
@@ -41,6 +41,9 @@ flatpickr(refs.input, options);
 function clickOnStart() {
   refs.start.disabled = true;
   refs.input.disabled = false;
+
+  // let timeDifference = currentDate - Date.now();
+  // renderTime(convertMs(timeDifference));
 
   const idInterval = setInterval(() => {
     timeDifference = currentDate - Date.now();
