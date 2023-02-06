@@ -46,13 +46,13 @@ function clickOnStart() {
   // renderTime(convertMs(timeDifference));
 
   const idInterval = setInterval(() => {
-    timeDifference = currentDate - Date.now();
+    const timeDifference = currentDate - Date.now();
     if (timeDifference < 0) {
       Notiflix.Report.warning('Time over');
       clearInterval(idInterval);
+    } else {
+      renderTime(convertMs(timeDifference));
     }
-
-    renderTime(convertMs(timeDifference));
   }, 1000);
 }
 
